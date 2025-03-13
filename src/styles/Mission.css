@@ -1,20 +1,12 @@
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background-color: #f5f5f5;
-    color: #064420;
-}
+
 
 /* Header section */
-header {
+.header {
     padding: 20px;
     background-color: white;
 }
 
-h1 {
+.header h1 {
     /* font-family: "Garamond", serif; */
     font-family: 'IM Fell English', serif;
     letter-spacing: 1px;
@@ -36,7 +28,7 @@ h1 {
     padding: 20px;
 }
 
-h2 {
+.mission-section h2 {
     font-size: 22px;
     margin-bottom: 20px;
     font-size: 30px;
