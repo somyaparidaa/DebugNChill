@@ -1,0 +1,131 @@
+.last-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* FAQ Section */
+  .faq-section {
+    margin-bottom: 60px;
+  }
+  
+  .faq-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  .faq-list {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .faq-item {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-question {
+    padding: 15px 20px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .faq-question:hover {
+    background-color: #e8e8e8;
+  }
+  
+  .faq-question.expanded {
+    background-color: #e0e0e0;
+  }
+  
+  .toggle-icon {
+    font-size: 20px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  
+  .faq-answer {
+    padding: 15px 20px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    line-height: 1.6;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #f0f0f0;
+    padding: 40px 20px;
+    margin-top: 60px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .footer-logo h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .tagline {
+    font-style: italic;
+    margin-top: 5px;
+    color: #666;
+  }
+  
+  .footer-contact {
+    margin-top: 20px;
+  }
+  
+  .footer-contact h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .footer-contact p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .footer-bottom {
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    color: #888;
+    font-size: 14px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .footer-contact {
+      margin-top: 30px;
+    }
+  }
