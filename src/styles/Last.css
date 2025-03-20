@@ -1,123 +1,199 @@
-/* General Styles */
+/* General Page Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* How We Work Section */
+.how-it-works {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.how-it-works h2 {
+  color: #234a35;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.step {
+  background: #fff;
+  padding: 20px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect on each step box */
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.step-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #234a35;
+  margin-bottom: 8px;
+}
+
+.step-content p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Newsletter Section */
+.newsletter {
+  background-color: #234a35; /* Dark green background */
+  color: white;
+  padding: 50px 20px;
+}
+
+/* Two-column layout for newsletter content */
+.newsletter-content {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Adjust on smaller screens */
+}
+
+/* Left side text block */
+.newsletter-text {
+  flex: 1;
+  min-width: 250px;
+  margin-right: 20px;
+  font-family: "IM FELL French Canon", serif;
+}
+
+.newsletter-text h2 {
+  font-size: 4.5rem;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.newsletter-text p {
+  font-size: 24px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Right side form block */
+.newsletter-form-wrapper {
+  flex: 1;
+  min-width: 300px;
+  background-color: #234a35; /* Gold-ish background */
+  padding: 30px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Form styling */
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsletter-form input,
+.newsletter-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Optional: Lighter background for inputs/textarea */
+.newsletter-form input,
+.newsletter-form textarea {
+  background-color: #fff;
+  color: #333;
+}
+
+.newsletter-form textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #f9f7f7;
+}
+
+.checkbox input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.checkbox label {
+  cursor: pointer;
+}
+
+/* Button styling */
+button {
+  background-color: #d1a853;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #f3e40c;
+  transform: scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .newsletter-content {
+    flex-direction: column;
   }
-  
-  
-  
-  /* How We Work Section */
-  .how-it-works {
-    text-align: center;
-    margin: 40px 0;
-  }
-  
-  .how-it-works h2 {
-    color: #234a35;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .steps {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  .step {
-    background: white;
-    padding: 20px;
-    width: 280px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-  }
-  
-  .step h3 {
-    font-size: 18px;
-    font-weight: bold;
-    color: #234a35;
-  }
-  
-  .step p {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  /* Newsletter Section */
-  .newsletter {
-    background-color: #234a35;
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
-  }
-  
-  .newsletter h2 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .newsletter p {
-    font-size: 16px;
+
+  .newsletter-text {
+    margin-right: 0;
     margin-bottom: 20px;
   }
-  
-  .newsletter-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    max-width: 500px;
+
+  .newsletter-form-wrapper {
     margin: 0 auto;
   }
-  
-  .newsletter-form input,
-  .newsletter-form textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 5px;
-    border: none;
-    font-size: 14px;
-  }
-  
-  .newsletter-form textarea {
-    height: 80px;
-  }
-  
-  .checkbox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-  }
-  
-  .checkbox input {
-    width: 16px;
-    height: 16px;
-  }
-  
-  button {
-    background-color: #d1a853;
-    color: black;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #b89341;
-  }
-  
+}
