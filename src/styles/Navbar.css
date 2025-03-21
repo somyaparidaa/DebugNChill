@@ -1,86 +1,86 @@
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 30px;
-    background-color: #f8f9fa;
-    border-radius: 30px; /* Rounded navbar */
-    margin: 10px auto; /* Centering */
-    max-width: 90%; /* Keep width responsive */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    position: sticky;
-    top: 30px; /* Makes it stick while scrolling */
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background-color: #f8f9fa;
+  border-radius: 30px; /* Rounded navbar */
+  margin: 10px auto; /* Centering */
+  max-width: 90%; /* Keep width responsive */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  position: sticky;
+  top: 30px; /* Makes it stick while scrolling */
+  z-index: 1000;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
 }
 
 .nav nav {
-    display: flex;
-    gap: 45px;
+  display: flex;
+  gap: 45px;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    position: relative;
-    padding-bottom: 5px;
-    transition: color 0.3s ease-in-out;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease-in-out;
 }
 
 .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #27ae60;
-    transition: width 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #27ae60;
+  transition: width 0.3s ease-in-out;
 }
 
 .nav-link:hover {
-    color: #27ae60;
+  color: #27ae60;
 }
 
 .nav-link:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 .login-btn {
-    padding: 8px 16px;
-    background-color: #27ae60;
-    color: white;
-    border-radius: 20px; /* Rounded button */
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
+  padding: 8px 16px;
+  background-color: #22c55e;
+  color: white;
+  border-radius: 20px; /* Rounded button */
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .login-btn:hover {
-    background-color: #218c54;
+  background-color: #218c54;
 }
 
 /* Responsive Navbar */
 @media (max-width: 768px) {
-    .nav {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        border-radius: 20px;
-    }
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+  }
 
-    .nav nav {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
+  .nav nav {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
 
-    .login-btn {
-        margin-top: 10px;
-    }
+  .login-btn {
+    margin-top: 10px;
+  }
 }

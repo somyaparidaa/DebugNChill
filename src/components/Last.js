@@ -1,7 +1,20 @@
 import React from "react";
 import "../styles/Last.css";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Last = () => {
+  useGSAP(() => {
+    gsap.from(".newsletter-text span", {
+      opacity: 0,
+      color: "white",
+      duration: 2,
+      delay: 1,
+      stagger: 1,
+      y: 50,
+    });
+  });
+
   return (
     <div className="container">
       {/* How We Work Section */}
@@ -43,7 +56,9 @@ const Last = () => {
         <div className="newsletter-content">
           {/* Left side text */}
           <div className="newsletter-text">
-            <h2>Ready to make an impact?</h2>
+            <h2>
+              <span>Ready to make</span> <span>an impact?</span>
+            </h2>
             <p>
               Sign up to our newsletter - stay updated about the latest news on
               E-waste and exciting opportunities to be a part of our mission!
