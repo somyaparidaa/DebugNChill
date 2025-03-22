@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Mission.css";
-import mission1 from "../images/mission1.png";
+import img1 from "../images/mission1.png";
+import img2 from "../images/E-Waste2.jpeg";
+import img3 from "../images/E-Waste3.jpeg";
+import img4 from "../images/E-Waste3.jpeg";
 
 const Header = () => {
   return (
@@ -15,29 +18,80 @@ const Header = () => {
   );
 };
 
-const MissionCard = ({ image, text }) => {
+const MissionCard = ({ images, title, shortText, fullText }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
   return (
-    <div className="mission-card">
-      <img src={image} alt="E-waste" />
-      <p className="text-Color">{text}</p>
+    <div className={`mission-card ${isFlipped ? "flipped" : ""}`}>
+      {/* Front Side */}
+      <div className="mission-card-front">
+        <div className="image-grid">
+          {images.map((img, index) => (
+            <img key={index} src={img} alt="E-waste" className="grid-image" />
+          ))}
+        </div>
+        <p className="text-Color">{shortText}</p>
+        <button className="btn" onClick={() => setIsFlipped(true)}>
+          Learn More
+        </button>
+      </div>
+
+      {/* Back Side */}
+      <div className="mission-card-back">
+        <p className="text-Color">{fullText}</p>
+        <button className="btn back-btn" onClick={() => setIsFlipped(false)}>
+          Back
+        </button>
+      </div>
     </div>
   );
 };
 
 const MissionSection = () => {
   const missions = [
-    "Reduce e-waste pollution by encouraging responsible disposal.",
-    "Extend the life of electronics through repair, recycle and reuse.",
-    "Raise awareness about sustainable tech practices.",
-    "Make our services as accessible as possible.",
+    {
+      title: "Reduce E-Waste",
+      shortText:
+        "Reduce e-waste pollution by encouraging responsible disposal.",
+      fullText:
+        "We promote responsible e-waste disposal by educating people about safe recycling and offering convenient drop-off points for old electronics.",
+      images: [img1],
+    },
+    {
+      title: "Extend Life of Electronics",
+      shortText:
+        "Extend the life of electronics through repair, recycle and reuse.",
+      fullText:
+        "By refurbishing and repairing electronics, we extend their lifespan and reduce unnecessary waste, making tech more accessible to everyone.",
+      images: [img2],
+    },
+    {
+      title: "Raise Awareness",
+      shortText: "Raise awareness about sustainable tech practices.",
+      fullText:
+        "We conduct workshops and campaigns to educate individuals and businesses about sustainable technology and eco-friendly practices.",
+      images: [img3],
+    },
+    {
+      title: "Improve Accessibility",
+      shortText: "Make our services as accessible as possible.",
+      fullText:
+        "We strive to provide e-waste recycling and repair services in every city, making it easy for everyone to participate in sustainability.",
+      images: [img4],
+    },
   ];
 
   return (
     <section className="mission-section">
       <h2>Our Mission</h2>
       <div className="mission-container">
-        {missions.map((text, index) => (
-          <MissionCard key={index} image={mission1} text={text} />
+        {missions.map((mission, index) => (
+          <MissionCard
+            key={index}
+            images={mission.images}
+            title={mission.title}
+            shortText={mission.shortText}
+            fullText={mission.fullText}
+          />
         ))}
       </div>
     </section>
