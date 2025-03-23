@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/Footer.css";
-// Make sure to install FontAwesome:
-// npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons
+import { gsap } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -11,6 +10,9 @@ import {
 
 const Footer = () => {
   const [expandedFaq, setExpandedFaq] = useState(null);
+
+  // Ref to the parent container of FAQ items (optional, for clarity)
+  const faqListRef = useRef(null);
 
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -44,12 +46,38 @@ const Footer = () => {
     },
   ];
 
+  // === GSAP Pendulum Animation ===
+  useEffect(() => {
+    if (!faqListRef.current) return;
+
+    // Select all the FAQ items
+    const items = faqListRef.current.querySelectorAll(".faq-item");
+
+    items.forEach((item, index) => {
+      // Determine direction: even indices start from the left, odd from the right
+      const startX = index % 2 === 0 ? -50 : 50;
+
+      gsap.fromTo(
+        item,
+        { x: startX }, // Starting position
+        {
+          x: 0, // Move to center (x=0)
+          duration: 1.5, // Adjust duration to control speed
+          ease: "power1.inOut",
+          repeat: -1, // Infinite loop
+          yoyo: true, // Pendulum effect (back and forth)
+          stagger: 0.2, // Optional: small delay between items
+        }
+      );
+    });
+  }, []);
+
   return (
     <div className="full-width-container">
       {/* FAQ Section */}
       <div className="faq-section">
         <h2>Frequently Asked Questions</h2>
-        <div className="faq-list">
+        <div className="faq-list" ref={faqListRef}>
           {faqs.map((faq, index) => (
             <div key={index} className="faq-item">
               <div
