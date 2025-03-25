@@ -11,28 +11,30 @@ const Hero = () => {
         strings: ["Give your old Tech a <br> New Life today!"],
         typeSpeed: 50,
         showCursor: true,
-        cursorChar: '|',
+        cursorChar: "|",
         startDelay: 300,
         loop: false,
-        html: true
+        html: true,
       });
-      
+
       // Destroy Typed instance on unmount
       return () => {
         typed.destroy();
       };
     }
   }, []);
-  
+
   return (
-    <div className="hero-container">
-      <div className="hero-content">
-        <h1 className="hero-title">
-          <span ref={typedTextRef}></span>
-        </h1>
-        <button className="hero-button">Get Started</button>
+    <section id="homepage">
+      <div className="hero-container">
+        <div className="hero-content">
+          <h1 className="hero-title">
+            <span ref={typedTextRef}></span>
+          </h1>
+          <button className="hero-button">Get Started</button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

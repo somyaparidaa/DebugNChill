@@ -1,0 +1,97 @@
+/* Container */
+.container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+/* Title */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Map Container */
+.map-container {
+  height: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Info Section */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Search Box */
+.search-box {
+  background-color: #f0fdf4;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.search-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Centers List */
+.centers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.center-card {
+  background-color: #f9fafb;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.center-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
+  color: #16a34a;
+  margin-top: 4px;
+}
+
+.center-name {
+  font-weight: bold;
+}
+
+.center-address,
+.center-phone {
+  font-size: 14px;
+  color: #4b5563;
+}
