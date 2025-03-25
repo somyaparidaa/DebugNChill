@@ -1,38 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
-import "../styles/techCycle.css";
+import React, { useEffect } from "react";
+import "../styles/techCycle.css"; // Ensure this path is correct
 
-// SVG Components
-const LogoIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M21 9L17 12L21 15V9Z" fill="#0a1a17" />
-    <path d="M3 9L7 12L3 15V9Z" fill="#0a1a17" />
-    <path
-      d="M12 6C13.1046 6 14 5.10457 14 4C14 2.89543 13.1046 2 12 2C10.8954 2 10 2.89543 10 4C10 5.10457 10.8954 6 12 6Z"
-      fill="#0a1a17"
-    />
-    <path
-      d="M12 22C13.1046 22 14 21.1046 14 20C14 18.8954 13.1046 18 12 18C10.8954 18 10 18.8954 10 20C10 21.1046 10.8954 22 12 22Z"
-      fill="#0a1a17"
-    />
-    <path
-      d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-      fill="#0a1a17"
-    />
-  </svg>
-);
-
-const CircuitBoard = () => {
-  const svgRef = useRef(null);
-
+const TechCycleLogin = () => {
   useEffect(() => {
-    if (!svgRef.current) return;
+    drawCircuitBoard();
+    createEwasteElements();
+    animateCounters();
+  }, []);
 
+  // Circuit board background animation
+  const drawCircuitBoard = () => {
+    const circuitBoard = document.getElementById("circuitBoard");
     let paths = "";
     const numLines = 50;
 
@@ -42,111 +20,204 @@ const CircuitBoard = () => {
       const x2 = x1 + (Math.random() * 20 - 10);
       const y2 = y1 + (Math.random() * 20 - 10);
 
-      paths += `<path d='M${x1}% ${y1}% L${x2}% ${y2}%' stroke='#4ecca3' stroke-width='0.5' />`;
+      paths += `<path d="M${x1}% ${y1}% L${x2}% ${y2}%" stroke="#4ecca3" stroke-width="0.5" />`;
+
+      // Add some circuit nodes
       if (Math.random() > 0.7) {
-        paths += `<circle cx='${x1}%' cy='${y1}%' r='1' fill='#4ecca3' />`;
+        paths += `<circle cx="${x1}%" cy="${y1}%" r="1" fill="#4ecca3" />`;
       }
     }
-    svgRef.current.innerHTML = paths;
-  }, []);
 
-  return (
-    <svg
-      className="circuit-board"
-      ref={svgRef}
-      width="100%"
-      height="100%"
-      xmlns="http://www.w3.org/2000/svg"
-    ></svg>
-  );
-};
+    if (circuitBoard) {
+      circuitBoard.innerHTML = paths;
+    }
+  };
 
-const Counter = ({ target, id }) => {
-  const [count, setCount] = useState(0);
+  // Create e-waste floating elements
+  const createEwasteElements = () => {
+    const ewasteElements = document.getElementById("ewasteElements");
+    if (!ewasteElements) return;
 
-  useEffect(() => {
+    const elements = [
+      // Computer icon
+      '<svg width="60" height="60" viewBox="0 0 24 24" fill="#4ecca3" opacity="0.6" xmlns="http://www.w3.org/2000/svg"><path d="M20 18C21.1 18 22 17.1 22 16V6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V16C2 17.1 2.9 18 4 18H0V20H24V18H20ZM4 6H20V16H4V6Z"/></svg>',
+      // Phone icon
+      '<svg width="50" height="50" viewBox="0 0 24 24" fill="#4ecca3" opacity="0.6" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.01L7 1C5.9 1 5 1.9 5 3V21C5 22.1 5.9 23 7 23H17C18.1 23 19 22.1 19 21V3C19 1.9 18.1 1.01 17 1.01ZM17 19H7V5H17V19ZM12 18C12.83 18 13.5 17.33 13.5 16.5C13.5 15.67 12.83 15 12 15C11.17 15 10.5 15.67 10.5 16.5C10.5 17.33 11.17 18 12 18Z"/></svg>',
+      // Circuit board icon
+      '<svg width="70" height="70" viewBox="0 0 24 24" fill="#4ecca3" opacity="0.6" xmlns="http://www.w3.org/2000/svg"><path d="M7 5H9V9H7V5ZM15 5H17V9H15V5ZM7 11H9V15H7V11ZM15 11H17V15H15V11ZM5 5V15H3V5H5ZM21 5V15H19V5H21ZM5 19H19V21H5V19ZM19 3H5C3.9 3 3 3.9 3 5V15C3 16.1 3.9 17 5 17H19C20.1 17 21 16.1 21 15V5C21 3.9 20.1 3 19 3Z"/></svg>',
+    ];
+
+    for (let i = 0; i < 15; i++) {
+      const element = document.createElement("div");
+      element.className = "ewaste-item";
+      element.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+      element.style.left = `${Math.random() * 100}%`;
+      element.style.top = `${Math.random() * 100}%`;
+      element.style.animationDelay = `${Math.random() * 5}s`;
+      element.style.animationDuration = `${15 + Math.random() * 15}s`;
+      element.style.transform = `scale(${0.5 + Math.random() * 0.5}) rotate(${
+        Math.random() * 360
+      }deg)`;
+
+      ewasteElements.appendChild(element);
+    }
+  };
+
+  // Animate counters
+  const animateCounters = () => {
+    let devicesCount = 0;
+    let wasteCount = 0;
+    const targetDevices = 53824;
+    const targetWaste = 278;
     const duration = 2000;
     const steps = 60;
     const interval = duration / steps;
-    const increment = target / steps;
-    let currentCount = 0;
+
+    const devicesIncrement = targetDevices / steps;
+    const wasteIncrement = targetWaste / steps;
 
     const counter = setInterval(() => {
-      currentCount += increment;
-      if (currentCount >= target) {
-        currentCount = target;
+      devicesCount += devicesIncrement;
+      wasteCount += wasteIncrement;
+
+      if (devicesCount >= targetDevices) {
+        devicesCount = targetDevices;
+        wasteCount = targetWaste;
         clearInterval(counter);
       }
-      setCount(Math.floor(currentCount));
+
+      const devicesEl = document.getElementById("devicesCounter");
+      const wasteEl = document.getElementById("wasteCounter");
+      if (devicesEl) {
+        devicesEl.textContent = Math.floor(devicesCount).toLocaleString();
+      }
+      if (wasteEl) {
+        wasteEl.textContent = Math.floor(wasteCount).toLocaleString();
+      }
     }, interval);
+  };
 
-    return () => clearInterval(counter);
-  }, [target]);
-
-  return (
-    <div className="stat-number" id={id}>
-      {count.toLocaleString()}
-    </div>
-  );
-};
-
-const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    const overlay = document.getElementById("overlay");
+    const loader = document.getElementById("loader");
+    if (overlay) overlay.style.display = "block";
+    if (loader) loader.style.display = "block";
+
     setTimeout(() => {
-      setLoading(false);
+      if (overlay) overlay.style.display = "none";
+      if (loader) loader.style.display = "none";
       alert("Login successful!");
     }, 2000);
   };
 
   return (
-    <div className="login-wrapper">
-      <form onSubmit={handleSubmit} id="loginForm">
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
+    <div className="techcycle-container">
+      {/* Circuit board background */}
+      <svg
+        className="circuit-board"
+        id="circuitBoard"
+        width="100%"
+        height="100%"
+      ></svg>
+
+      {/* E-waste floating elements */}
+      <div className="ewaste-elements" id="ewasteElements"></div>
+
+      {/* Loading animation */}
+      <div className="overlay" id="overlay"></div>
+      <div className="loader" id="loader">
+        <div className="loader-circle"></div>
+      </div>
+
+      <div className="container">
+        <div className="info-wrapper">
+          <div className="logo">
+            <div className="logo-icon">
+              <span>♻</span>
+            </div>
+            <span>TechCycle</span>
+          </div>
+
+          <h1>
+            Turn E-Waste Into
+            <br />A Sustainable Future
+          </h1>
+          <p>
+            Join thousands of environmentally conscious users who are helping to
+            reduce electronic waste through proper recycling and upcycling
+            initiatives.
+          </p>
+
+          <div className="stat-box">
+            <div className="icon">📱</div>
+            <div>
+              <div className="stat-number" id="devicesCounter">
+                0
+              </div>
+              <div className="stat-text">Devices Recycled</div>
+            </div>
+          </div>
+
+          <div className="stat-box">
+            <div className="icon">🔋</div>
+            <div>
+              <div className="stat-number" id="wasteCounter">
+                0
+              </div>
+              <div className="stat-text">Tons of E-Waste Diverted</div>
+            </div>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            placeholder="Enter your password"
-            required
-          />
-          <span
-            className="toggle-password"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? "🙈" : "👁️"}
-          </span>
+
+        <div className="login-wrapper">
+          <div className="login-header">
+            <h2>Welcome Back</h2>
+            <p>Sign in to your TechCycle account</p>
+          </div>
+
+          <form id="loginForm" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+
+            <div className="remember-forgot">
+              <div className="checkbox-wrapper">
+                <input type="checkbox" id="remember" />
+                <label htmlFor="remember">Remember me</label>
+              </div>
+              <a href="#">Forgot Password?</a>
+            </div>
+
+            <button type="submit" className="login-btn">
+              Sign In
+            </button>
+
+            <div className="register-link">
+              Don&apos;t have an account? <a href="#">Register</a>
+            </div>
+          </form>
         </div>
-        <button type="submit" className="login-btn" disabled={loading}>
-          Sign In
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
 
-const TechCycleApp = () => {
-  return (
-    <div className="tech-cycle-app">
-      <LogoIcon />
-      <CircuitBoard />
-      <Counter target={53824} id="devicesCounter" />
-      <LoginForm />
-    </div>
-  );
-};
-
-export default TechCycleApp;
+export default TechCycleLogin;

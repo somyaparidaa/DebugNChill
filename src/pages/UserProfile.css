@@ -1,0 +1,14 @@
+/* App.css */
+
+.app-container {
+  min-height: 100vh;
+  background-color: #f9fafb; /* Equivalent to Tailwind's bg-gray-50 */
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  max-width: 1200px; /* Equivalent to container mx-auto */
+  margin: 0 auto;
+  padding: 32px 16px; /* Equivalent to px-4 py-8 */
+}

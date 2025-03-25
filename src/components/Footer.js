@@ -73,90 +73,92 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className="full-width-container">
-      {/* FAQ Section */}
-      <div className="faq-section">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-list" ref={faqListRef}>
-          {faqs.map((faq, index) => (
-            <div key={index} className="faq-item">
-              <div
-                className={`faq-question ${
-                  expandedFaq === index ? "expanded" : ""
-                }`}
-                onClick={() => toggleFaq(index)}
-              >
-                {faq.question}
-                <span className="toggle-icon">
-                  {expandedFaq === index ? "−" : "+"}
-                </span>
+    <section id="footer">
+      <div className="full-width-container">
+        {/* FAQ Section */}
+        <div className="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          <div className="faq-list" ref={faqListRef}>
+            {faqs.map((faq, index) => (
+              <div key={index} className="faq-item">
+                <div
+                  className={`faq-question ${
+                    expandedFaq === index ? "expanded" : ""
+                  }`}
+                  onClick={() => toggleFaq(index)}
+                >
+                  {faq.question}
+                  <span className="toggle-icon">
+                    {expandedFaq === index ? "−" : "+"}
+                  </span>
+                </div>
+                {expandedFaq === index && (
+                  <div className="faq-answer">{faq.answer}</div>
+                )}
               </div>
-              {expandedFaq === index && (
-                <div className="faq-answer">{faq.answer}</div>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {/* Footer Section */}
+        <footer className="footer">
+          <div className="footer-content">
+            <div className="footer-logo">
+              <h2>TechCycle</h2>
+              <p className="tagline">Recycle, reborn, Revive!</p>
+            </div>
+
+            <div className="footer-contact">
+              <h3>CONTACT US</h3>
+              <p>+91 9XXXXXXXX</p>
+              <p>TechCycle@gmail.com</p>
+              <p>537 Kandivali, Sector 3, Mumbai, India</p>
+            </div>
+
+            {/* Social Media Icons */}
+            <div className="social-media">
+              <h3>Follow Us</h3>
+              <div className="social-icons">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    className="social-icon facebook"
+                  />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faInstagram}
+                    className="social-icon instagram"
+                  />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faTwitter}
+                    className="social-icon twitter"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <p>&copy; 2025 TechCycle. All rights reserved.</p>
+          </div>
+        </footer>
       </div>
-
-      {/* Footer Section */}
-      <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-logo">
-            <h2>TechCycle</h2>
-            <p className="tagline">Recycle, reborn, Revive!</p>
-          </div>
-
-          <div className="footer-contact">
-            <h3>CONTACT US</h3>
-            <p>+91 9XXXXXXXX</p>
-            <p>TechCycle@gmail.com</p>
-            <p>537 Kandivali, Sector 3, Mumbai, India</p>
-          </div>
-
-          {/* Social Media Icons */}
-          <div className="social-media">
-            <h3>Follow Us</h3>
-            <div className="social-icons">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon
-                  icon={faFacebook}
-                  className="social-icon facebook"
-                />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon
-                  icon={faInstagram}
-                  className="social-icon instagram"
-                />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon
-                  icon={faTwitter}
-                  className="social-icon twitter"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p>&copy; 2025 TechCycle. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+    </section>
   );
 };
 

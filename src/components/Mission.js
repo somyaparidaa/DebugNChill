@@ -100,10 +100,12 @@ const MissionSection = () => {
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <MissionSection />
-    </div>
+    <section id="mission">
+      <div>
+        <Header />
+        <MissionSection />
+      </div>
+    </section>
   );
 };
 
