@@ -10,16 +10,16 @@ const Header = () => {
         TechCycle
       </div>
       <nav>
-        <a href="#homepage" className="nav-link">
+        <a href="#homepage" className="nav-linker">
           Home
         </a>
-        <a href="#mission" className="nav-link">
+        <a href="#mission" className="nav-linker">
           About us
         </a>
-        <a href="#last" className="nav-link">
+        <a href="#last" className="nav-linker">
           Contact us
         </a>
-        <a href="#footer" className="nav-link">
+        <a href="#footer" className="nav-linker">
           FAQs
         </a>
       </nav>

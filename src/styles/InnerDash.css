@@ -1,15 +1,39 @@
-/* Dashboard container */
+/* Root Variables for Easy Theming */
+:root {
+  --primary-bg: beige;
+  --card-bg: rgb(153, 224, 163);
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --icon-green: #4caf50;
+  --icon-blue: #2196f3;
+  --icon-purple: #9c27b0;
+  --icon-red: #f44336;
+  --transition-speed: 0.3s;
+}
+
+/* Global Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  transition: all var(--transition-speed) ease;
+}
+
+/* Dashboard Container */
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 90px;
+  background-color: var(--primary-bg);
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-/* Stats grid */
+/* Stats Grid with Enhanced Responsiveness */
 .stats-grid {
-  display: grid;
+  display: grid;  
   grid-template-columns: repeat(1, 1fr);
-  gap: 16px;
+  gap: 50px;
+  perspective: 1000px;
 }
 
 @media (min-width: 768px) {
@@ -24,125 +48,252 @@
   }
 }
 
-/* Stat cards */
+/* Stat Cards with Interactive Effects */
 .stat-card {
-  background-color: white;
+  background-color: var(--card-bg);
   padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 15px;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateZ(0);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center, 
+    rgba(255,255,255,0.3) 0%, 
+    transparent 70%
+  );
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.05) rotateX(5deg);
+  box-shadow: 
+    0 15px 20px -5px rgba(0, 0, 0, 0.15),
+    0 6px 8px -3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
 }
 
 .stat-content {
   display: flex;
   align-items: center;
   gap: 12px;
+  position: relative;
+  z-index: 1;
 }
 
 .stat-icon {
-  height: 32px;
-  width: 32px;
+  height: 48px;
+  width: 48px;
+  animation: float 3s ease-in-out infinite;
 }
 
-.electronics-icon {
-  color: #4caf50; /* green */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.batteries-icon {
-  color: #2196f3; /* blue */
-}
-
-.components-icon {
-  color: #9c27b0; /* purple */
-}
-
-.points-icon {
-  color: #f44336; /* red */
-}
+.electronics-icon { color: var(--icon-green); }
+.batteries-icon { color: var(--icon-blue); }
+.components-icon { color: var(--icon-purple); }
+.points-icon { color: var(--icon-red); }
 
 .stat-title {
   font-size: 1.125rem;
   font-weight: 600;
   margin: 0;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .stat-value {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
+  color: var(--text-dark);
+  position: relative;
 }
 
-/* Chart container */
+.stat-value::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(to right, var(--icon-green), transparent);
+}
+
+/* Chart Container */
 .chart-container {
   background-color: white;
   padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 15px;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .chart-wrapper {
   overflow-x: auto;
+  position: relative;
+}
+
+.chart-wrapper::before,
+.chart-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(to right, 
+    rgba(255,255,255,0.8), 
+    transparent
+  );
+  z-index: 1;
+}
+
+.chart-wrapper::before {
+  left: 0;
+}
+
+.chart-wrapper::after {
+  right: 0;
+  transform: scaleX(-1);
 }
 
 .section-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 16px;
+  color: var(--text-dark);
+  position: relative;
+  padding-left: 15px;
 }
 
-/* Activity timeline */
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--icon-green);
+}
+
+/* Activity Timeline */
 .activity-container {
   background-color: white;
   padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 15px;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .timeline {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--icon-green);
+  opacity: 0.3;
 }
 
 .timeline-item {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  position: relative;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.timeline-item:hover {
+  background-color: rgba(76, 175, 80, 0.05);
 }
 
 .timeline-marker {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: #4caf50;
+  background-color: var(--icon-green);
   margin-top: 8px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
 }
 
 .timeline-content {
   flex: 1;
+  position: relative;
 }
 
 .timeline-date {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--text-light);
   margin: 0 0 2px 0;
 }
 
 .timeline-title {
   font-weight: 600;
   margin: 0 0 2px 0;
+  color: var(--text-dark);
 }
 
 .timeline-category {
   font-size: 0.875rem;
-  color: #4b5563;
+  color: var(--text-light);
   margin: 0 0 2px 0;
+  background-color: rgba(76, 175, 80, 0.1);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
 }
 
 .timeline-points {
   font-size: 0.875rem;
-  color: #4caf50;
+  color: var(--icon-green);
   margin: 0;
+  font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .dashboard-container {
+    gap: 40px;
+    padding: 1rem;
+  }
+
+  .stats-grid {
+    gap: 20px;
+  }
 }

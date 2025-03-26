@@ -25,7 +25,7 @@ function Navbar() {
         <div className="navbar-logo">
           <Link to="/" className="logo-link">
             <Recycle className="logo-icon" />
-            <span className="logo-text">EcoRecycle</span>
+            <span className="logo-text">TechCycle</span>
           </Link>
         </div>
         <div className="navbar-links">
