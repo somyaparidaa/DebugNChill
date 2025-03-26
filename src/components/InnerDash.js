@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from 'react';
+import "../styles/InnerDash.css"; // Keep the original import
 import {
   BarChart,
   Bar,
@@ -7,9 +8,16 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-} from "recharts";
-import { Calendar, Monitor, Battery, Cpu } from "lucide-react";
-import "../styles/InnerDash.css";
+  ResponsiveContainer
+} from 'recharts';
+import { 
+  Monitor, 
+  Battery, 
+  Cpu, 
+  Calendar, 
+  ArrowUpRight,
+  ArrowDownRight 
+} from 'lucide-react';
 
 const recyclingData = [
   { month: "Jan", electronics: 4, metals: 3 },
@@ -33,75 +41,107 @@ const timelineData = [
 ];
 
 function Dashboard() {
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const statsCards = [
+    {
+      icon: <Monitor className="stat-icon electronics-icon" />,
+      title: "Electronics",
+      value: "12 items"
+    },
+    {
+      icon: <Battery className="stat-icon batteries-icon" />,
+      title: "Batteries",
+      value: "8 items"
+    },
+    {
+      icon: <Cpu className="stat-icon components-icon" />,
+      title: "Components",
+      value: "15 items"
+    },
+    {
+      icon: <Calendar className="stat-icon points-icon" />,
+      title: "Total Points",
+      value: "250"
+    }
+  ];
+
+  const filteredTimeline = activeFilter === 'all' 
+    ? timelineData 
+    : timelineData.filter(item => item.category.toLowerCase() === activeFilter);
+
   return (
     <div className="dashboard-container">
+      <h1 className="dashboard-title">Recycling Dashboard</h1>
+      
+      {/* Stats Grid */}
       <div className="stats-grid">
-        <div className="stat-card">
-          <div className="stat-content">
-            <Monitor className="stat-icon electronics-icon" />
-            <div>
-              <h3 className="stat-title">Electronics</h3>
-              <p className="stat-value">12 items</p>
+        {statsCards.map((card, index) => (
+          <div key={index} className="stat-card">
+            <div className="stat-content">
+              {card.icon}
+              <div>
+                <h3 className="stat-title">{card.title}</h3>
+                <p className="stat-value">{card.value}</p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="stat-card">
-          <div className="stat-content">
-            <Battery className="stat-icon batteries-icon" />
-            <div>
-              <h3 className="stat-title">Batteries</h3>
-              <p className="stat-value">8 items</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="stat-card">
-          <div className="stat-content">
-            <Cpu className="stat-icon components-icon" />
-            <div>
-              <h3 className="stat-title">Components</h3>
-              <p className="stat-value">15 items</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="stat-card">
-          <div className="stat-content">
-            <Calendar className="stat-icon points-icon" />
-            <div>
-              <h3 className="stat-title">Total Points</h3>
-              <p className="stat-value">250</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
 
+      {/* Recycling Statistics */}
       <div className="chart-container">
         <h2 className="section-title">Recycling Statistics</h2>
         <div className="chart-wrapper">
-          <BarChart width={600} height={300} data={recyclingData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="electronics" fill="#4CAF50" />
-            <Bar dataKey="metals" fill="#2196F3" />
-          </BarChart>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={recyclingData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#fff', 
+                  border: '1px solid #ddd', 
+                  borderRadius: '8px' 
+                }}
+              />
+              <Legend />
+              <Bar dataKey="electronics" fill="#10B981" name="Electronics" />
+              <Bar dataKey="metals" fill="#3B82F6" name="Metals" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
 
+      {/* Recent Activity */}
       <div className="activity-container">
-        <h2 className="section-title">Recent Activity</h2>
+        <div className="activity-header">
+          <h2 className="section-title">Recent Activity</h2>
+          <div className="activity-filters">
+            {['All', 'Electronics', 'Metals'].map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter.toLowerCase())}
+                className={`activity-filter ${
+                  activeFilter === filter.toLowerCase() ? 'active' : ''
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        </div>
+        
         <div className="timeline">
-          {timelineData.map((item, index) => (
+          {filteredTimeline.map((item, index) => (
             <div key={index} className="timeline-item">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <p className="timeline-date">{item.date}</p>
-                <p className="timeline-title">{item.item}</p>
-                <p className="timeline-category">Category: {item.category}</p>
+                <div className="timeline-item-header">
+                  <h3 className="timeline-title">{item.item}</h3>
+                  <span className="timeline-category">{item.category}</span>
+                </div>
                 <p className="timeline-points">+{item.points} points</p>
               </div>
             </div>

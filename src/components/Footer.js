@@ -47,30 +47,30 @@ const Footer = () => {
   ];
 
   // === GSAP Pendulum Animation ===
-  useEffect(() => {
-    if (!faqListRef.current) return;
+  // useEffect(() => {
+  //   if (!faqListRef.current) return;
 
-    // Select all the FAQ items
-    const items = faqListRef.current.querySelectorAll(".faq-item");
+  //   // Select all the FAQ items
+  //   const items = faqListRef.current.querySelectorAll(".faq-item");
 
-    items.forEach((item, index) => {
-      // Determine direction: even indices start from the left, odd from the right
-      const startX = index % 2 === 0 ? -50 : 50;
+  //   items.forEach((item, index) => {
+  //     // Determine direction: even indices start from the left, odd from the right
+  //     const startX = index % 2 === 0 ? -50 : 50;
 
-      gsap.fromTo(
-        item,
-        { x: startX }, // Starting position
-        {
-          x: 0, // Move to center (x=0)
-          duration: 1.5, // Adjust duration to control speed
-          ease: "power1.inOut",
-          repeat: -1, // Infinite loop
-          yoyo: true, // Pendulum effect (back and forth)
-          stagger: 0.2, // Optional: small delay between items
-        }
-      );
-    });
-  }, []);
+  //     gsap.fromTo(
+  //       item,
+  //       { x: startX }, // Starting position
+  //       {
+  //         x: 0, // Move to center (x=0)
+  //         duration: 1.5, // Adjust duration to control speed
+  //         ease: "power1.inOut",
+  //         repeat: -1, // Infinite loop
+  //         yoyo: true, // Pendulum effect (back and forth)
+  //         stagger: 0.2, // Optional: small delay between items
+  //       }
+  //     );
+  //   });
+  // }, []);
 
   return (
     <section id="footer">
