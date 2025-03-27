@@ -1,42 +1,50 @@
+// chatbot.js
 import React, { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
+import { generateContent } from "../components/model"; // Adjust the path as needed
 import "../styles/Chatbot.css";
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
-      text: "Hello! I'm your e-waste recycling assistant. How can I help you today?",
+      text: "Hello! I'm your assistant. How can I help?",
       isBot: true,
     },
   ]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
 
-    setMessages([...messages, { text: input, isBot: false }]);
-    // Simulate bot response
-    setTimeout(() => {
+    // Add user message to state
+    setMessages((prev) => [...prev, { text: input, isBot: false }]);
+    setInput("");
+    setLoading(true);
+
+    try {
+      // Use Gemini API to generate bot response
+      const res = await generateContent(input);
+      // The generateContent function returns a function that when called returns the text response.
+      // You may need to call it to get the actual response text:
+      const botResponse = res();
+      setMessages((prev) => [...prev, { text: botResponse, isBot: true }]);
+    } catch (err) {
+      console.error("Error generating response:", err);
       setMessages((prev) => [
         ...prev,
-        {
-          text: "Thank you for your message. I'm here to help with any questions about e-waste recycling!",
-          isBot: true,
-        },
+        { text: "Failed to generate response", isBot: true },
       ]);
-    }, 1000);
-    setInput("");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
       {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="chat-toggle-button"
-          aria-label="Open chat"
-        >
+        <button onClick={() => setIsOpen(true)} className="chat-toggle-button">
           <MessageCircle size={24} />
         </button>
       )}
@@ -44,25 +52,22 @@ function Chatbot() {
       {isOpen && (
         <div className="chat-container">
           <div className="chat-header">
-            <h3>Recycling Assistant</h3>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="close-button"
-              aria-label="Close chat"
-            >
+            <h3>Assistant</h3>
+            <button onClick={() => setIsOpen(false)} className="close-button">
               <X size={20} />
             </button>
           </div>
 
           <div className="messages-container">
-            {messages.map((message, index) => (
+            {messages.map((msg, i) => (
               <div
-                key={index}
-                className={`${message.isBot ? "bot-message" : "user-message"}`}
+                key={i}
+                className={msg.isBot ? "bot-message" : "user-message"}
               >
-                {message.text}
+                {msg.text}
               </div>
             ))}
+            {loading && <div className="bot-message">Thinking...</div>}
           </div>
 
           <div className="input-container">
@@ -74,11 +79,7 @@ function Chatbot() {
               placeholder="Type your message..."
               className="message-input"
             />
-            <button
-              onClick={handleSend}
-              className="send-button"
-              aria-label="Send message"
-            >
+            <button onClick={handleSend} className="send-button">
               Send
             </button>
           </div>
