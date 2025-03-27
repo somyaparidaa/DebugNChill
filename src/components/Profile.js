@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { User, Award, Clock, Recycle } from "lucide-react";
+import { doc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { db, auth } from "../firebase/firebase";
 import "../styles/Profile.css";
 
 function Profile() {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const uid = user.uid;
+        try {
+          const userDocRef = doc(db, "users", uid);
+          const userDocSnap = await getDoc(userDocRef);
+          if (userDocSnap.exists()) {
+            const data = userDocSnap.data();
+            if (data.name) {
+              setUserName(data.name);
+            }
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="profile-container">
       {/* User Profile Card */}
@@ -12,7 +39,7 @@ function Profile() {
             <User size={48} />
           </div>
           <div className="profile-info">
-            <h2 className="profile-name">John Doe</h2>
+            <h2 className="profile-name">{userName}</h2>
             <p className="profile-subtitle">Eco Warrior since 2023</p>
             <div className="profile-badge">
               <Award size={16} />
