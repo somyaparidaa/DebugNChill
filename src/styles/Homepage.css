@@ -82,7 +82,9 @@ body {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
+link,a{
+  text-decoration: none;
+}
 .hero-button:hover {
   background-color: #16a34a; /* Darker green */
 }

@@ -3,7 +3,7 @@ import "../styles/Mission.css";
 import img1 from "../images/mission1.png";
 import img2 from "../images/E-Waste2.jpeg";
 import img3 from "../images/E-Waste3.jpeg";
-import img4 from "../images/E-Waste3.jpeg";
+import img4 from "../images/E-Waste8.jpg";
 
 const Header = () => {
   return (
@@ -43,39 +43,34 @@ const MissionCard = ({ images, title, shortText, fullText }) => {
         </button>
       </div>
     </div>
-  );
+
+);
 };
 
 const MissionSection = () => {
   const missions = [
     {
       title: "Reduce E-Waste",
-      shortText:
-        "Reduce e-waste pollution by encouraging responsible disposal.",
-      fullText:
-        "We promote responsible e-waste disposal by educating people about safe recycling and offering convenient drop-off points for old electronics.",
+      shortText:"Reduce e-waste pollution by encouraging responsible disposal.",
+      fullText:"We promote responsible e-waste disposal by educating people about safe recycling and offering convenient drop-off points for old electronics.",
       images: [img1],
     },
     {
       title: "Extend Life of Electronics",
-      shortText:
-        "Extend the life of electronics through repair, recycle and reuse.",
-      fullText:
-        "By refurbishing and repairing electronics, we extend their lifespan and reduce unnecessary waste, making tech more accessible to everyone.",
+      shortText:"Extend the life of electronics through repair, recycle and reuse.",
+      fullText:"By refurbishing and repairing electronics, we extend their lifespan and reduce unnecessary waste, making tech more accessible to everyone.",
       images: [img2],
     },
     {
       title: "Raise Awareness",
       shortText: "Raise awareness about sustainable tech practices.",
-      fullText:
-        "We conduct workshops and campaigns to educate individuals and businesses about sustainable technology and eco-friendly practices.",
+      fullText:"We conduct workshops and campaigns to educate individuals and businesses about sustainable technology and eco-friendly practices.",
       images: [img3],
     },
     {
       title: "Improve Accessibility",
       shortText: "Make our services as accessible as possible.",
-      fullText:
-        "We strive to provide e-waste recycling and repair services in every city, making it easy for everyone to participate in sustainability.",
+      fullText:"We strive to provide e-waste recycling and repair services in every city, making it easy for everyone to participate in sustainability.",
       images: [img4],
     },
   ];

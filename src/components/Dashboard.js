@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Dashboard.css";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   // Sample data for the dashboard
@@ -165,7 +166,9 @@ const Dashboard = () => {
           <h2>Your Contribution Matters</h2>
           <p>By recycling your electronic waste, you've helped save valuable resources and protected our environment from harmful toxins. Thank you for being part of the solution!</p>
         </div>
-        <button className="recycle-button">Recycle More Devices</button>
+        <Link to="/login" className="recycle-button" >
+        Recycle More Devices
+      </Link>
       </div>
     </div>
   );

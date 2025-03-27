@@ -1,24 +1,25 @@
 import React from "react";
 import { AlertTriangle, Info, TreeDeciduous } from "lucide-react";
 import "../styles/Awareness.css"; // Import the separate CSS file
+// import img5 from "../images/image.png";
 
 const facts = [
   {
     title: "Growing E-Waste Crisis",
     description:
-      "Global e-waste reached 53.6 million metric tonnes in 2023, with only 17.4% being properly recycled.",
+      "E-waste is rapidly increasing due to rising electronics consumption and short product lifecycles. Toxic materials like lead and mercury pollute soil and water, harming ecosystems and human health. Poor recycling practices worsen the crisis, especially in developing nations. Sustainable disposal, stricter regulations, and consumer awareness are essential to mitigate this threat.",
     icon: AlertTriangle,
   },
   {
     title: "Environmental Impact",
     description:
-      "One million recycled laptops saves energy equivalent to electricity used by 3,500 homes in a year.",
+      "E-waste recycling reduces landfill waste, conserves natural resources, and prevents toxic chemicals like lead and mercury from polluting air, soil, and water. However, improper recycling methods release hazardous substances, harming workers and ecosystems. Sustainable recycling practices, stricter regulations, and advanced technology are crucial for minimizing environmental damage and promoting sustainability.",
     icon: TreeDeciduous,
   },
   {
     title: "Valuable Materials",
     description:
-      "One metric ton of circuit boards can contain 40-800 times the amount of gold found in gold ore.",
+      "Electronic waste holds valuable materials like gold, silver, and rare metals. One metric ton of circuit boards contains 40–800 times more gold than mined ore, making e-waste recycling highly profitable. Efficient recovery reduces environmental damage from mining, conserves resources, and supports a circular economy by reusing precious materials sustainably.",
     icon: Info,
   },
 ];
@@ -47,7 +48,7 @@ function Awareness() {
         <div className="impact-grid">
           <div className="image-container">
             <img
-              src="/api/placeholder/800/600"
+              src="../images/image.png"
               alt="E-waste recycling"
               className="impact-image"
             />

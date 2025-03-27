@@ -1,4 +1,6 @@
 /* Header section */
+
+
 .header {
   padding: 20px;
   background-color: white;
@@ -15,7 +17,7 @@
 }
 
 .content {
-  font-size: 14px;
+  font-size: 18px;
   color: #333;
   padding-left: 200px;
   padding-right: 200px;
@@ -28,10 +30,13 @@
   /* text-align: center; */
 }
 
+
+
+
 .mission-section h2 {
   font-size: 22px;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 40px;
   font-family: "IM Fell English", serif;
   letter-spacing: 1px;
 }
@@ -56,9 +61,9 @@
   color: white;
   text-align: center;
   font-size: 16px;
-  box-shadow: 25px 25px 15px #d1a853;
+  box-shadow: 10px 10px 10px #ffdd57;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 10px;
+  margin: 15px;
   height: 350 px;
   perspective: 1000px; /* Enables 3D effect */
   transform-style: preserve-3d;
@@ -99,8 +104,7 @@
   border-radius: 15px;
   text-align: center;
   /* padding: 20px; */
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-}
+} 
 
 /* Front Side */
 .mission-card-front {
@@ -110,6 +114,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 
 /* Grid for 4 images */
@@ -150,7 +155,7 @@
 
 /* Button Styling */
 .btn {
-  background-color: #ffdd57;
+  background-color: #ffcc33;
   color: black;
   border: none;
   padding: 10px 15px;
@@ -164,16 +169,16 @@
 }
 
 .btn:hover {
-  background-color: #ffcc33;
+  background-color: #ffdd57;
 }
 
 /* Back Button */
 .back-btn {
-  background-color: #ff5757;
+  background-color: #ffcc33;
 }
 
 .back-btn:hover {
-  background-color: #ff3333;
+  background-color: #ffdd57;
 }
 
 /* Responsive styles */

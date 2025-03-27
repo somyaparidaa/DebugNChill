@@ -92,13 +92,7 @@
   height: 600px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: all var(--transition-speed) ease;
-}
-
-.map-container:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  z-index: 99;
 }
 
 /* Info Section with Enhanced Spacing */
@@ -150,6 +144,34 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+/* Search Box */
+.search-box {
+  background-color: #f0fdf4;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.search-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  padding-right: 0px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Centers List */
+.centers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .center-card {
