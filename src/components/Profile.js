@@ -1,117 +1,54 @@
 import React, { useEffect, useState } from "react";
 import { User, Award, Clock, Recycle } from "lucide-react";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, addDoc, collection } from "firebase/firestore";  // ✅ FIXED IMPORT
 import { onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "../firebase/firebase";
 import "../styles/Profile.css";
 
 function Profile() {
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const uid = user.uid;
-        try {
-          const userDocRef = doc(db, "users", uid);
-          const userDocSnap = await getDoc(userDocRef);
-          if (userDocSnap.exists()) {
-            const data = userDocSnap.data();
-            if (data.name) {
-              setUserName(data.name);
-            }
-          }
-        } catch (error) {
-          console.error("Error fetching user data:", error);
-        }
-      }
+    const [device, setDevice] = useState({
+        name: "",
+        brand: "",
+        condition: "Used",
+        price: "",
+        description: "",
+        image: ""
     });
 
-    return () => unsubscribe();
-  }, []);
+    const handleChange = (e) => {
+        setDevice({ ...device, [e.target.name]: e.target.value });
+    };
 
-  return (
-    <div className="profile-container">
-      {/* User Profile Card */}
-      <div className="profile-card">
-        <div className="profile-header">
-          <div className="profile-avatar">
-            <User size={48} />
-          </div>
-          <div className="profile-info">
-            <h2 className="profile-name">{userName}</h2>
-            <p className="profile-subtitle">Eco Warrior since 2023</p>
-            <div className="profile-badge">
-              <Award size={16} />
-              <span>Level 5 Recycler</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-      {/* Achievements Section */}
-      <div className="info-section">
-        <div className="section-header">
-          <Award size={20} />
-          <h3>Achievements</h3>
-        </div>
-        <div className="section-content">
-          <div className="achievement-item">
-            <span className="achievement-name">First Recycling</span>
-            <span className="achievement-complete">✓</span>
-          </div>
-          <div className="achievement-item">
-            <span className="achievement-name">10 Items Recycled</span>
-            <span className="achievement-complete">✓</span>
-          </div>
-          <div className="achievement-item">
-            <span className="achievement-name">Electronics Expert</span>
-            <span className="achievement-progress">In Progress</span>
-          </div>
-        </div>
-      </div>
+        try {
+            await addDoc(collection(db, "marketplace"), device);
+            alert("Device listed successfully!");
+            setDevice({ name: "", brand: "", condition: "Used", price: "", description: "", image: "" });
+        } catch (error) {
+            console.error("Error adding document:", error);
+        }
+    };
 
-      {/* Recent Activity Section */}
-      <div className="info-section">
-        <div className="section-header">
-          <Clock size={20} />
-          <h3>Recent Activity</h3>
+    return (
+        <div className="sell-container">
+            <h2>Sell Your Device</h2>
+            <form onSubmit={handleSubmit}>
+                <input type="text" name="name" placeholder="Device Name" value={device.name} onChange={handleChange} required />
+                <input type="text" name="brand" placeholder="Brand (Apple, Samsung, etc.)" value={device.brand} onChange={handleChange} required />
+                <select name="condition" value={device.condition} onChange={handleChange}>
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                    <option value="Damaged">Damaged</option>
+                </select>
+                <input type="number" name="price" placeholder="Price ($)" value={device.price} onChange={handleChange} required />
+                <textarea name="description" placeholder="Description" value={device.description} onChange={handleChange}></textarea>
+                <input type="text" name="image" placeholder="Image URL (Optional)" value={device.image} onChange={handleChange} />
+                <button type="submit">List Device</button>
+            </form>
         </div>
-        <div className="section-content">
-          <div className="activity-item">
-            <span className="activity-date">Today</span>
-            <span className="activity-desc">Recycled old smartphone</span>
-          </div>
-          <div className="activity-item">
-            <span className="activity-date">Yesterday</span>
-            <span className="activity-desc">Recycled laptop battery</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Impact Stats Section */}
-      <div className="info-section">
-        <div className="section-header">
-          <Recycle size={20} />
-          <h3>Impact Stats</h3>
-        </div>
-        <div className="section-content">
-          <div className="stat-item">
-            <span className="stat-label">Total Items Recycled</span>
-            <span className="stat-value">35</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-label">CO₂ Saved</span>
-            <span className="stat-value">250kg</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-label">Points Earned</span>
-            <span className="stat-value">1,250</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+    );
+};
 
 export default Profile;
