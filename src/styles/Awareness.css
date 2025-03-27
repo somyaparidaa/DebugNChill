@@ -10,50 +10,18 @@
 
 .awareness-container {
   margin-bottom: 2rem;
-  margin-top: 2rem;
-  perspective: 1000px;
+  margin-top: 1.5rem;
 }
 
 .awareness-card {
   background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: 
-    0 10px 25px rgba(0, 0, 0, 0.1),
-    0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   padding: 2rem;
   margin-bottom: 2rem;
-  transition: all var(--transition-speed) ease;
-  position: relative;
-  overflow: hidden;
+  
 }
 
-.awareness-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at center, 
-    rgba(22, 163, 74, 0.1) 0%, 
-    transparent 70%
-  );
-  transform: rotate(-45deg);
-  opacity: 0;
-  transition: opacity var(--transition-speed) ease;
-}
-
-.awareness-card:hover {
-  transform: translateY(-10px) rotateX(5deg) scale(1.02);
-  box-shadow: 
-    0 15px 30px rgba(0, 0, 0, 0.15),
-    0 6px 8px rgba(0, 0, 0, 0.1);
-}
-
-.awareness-card:hover::before {
-  opacity: 1;
-}
 
 .section-title {
   font-size: 2rem;

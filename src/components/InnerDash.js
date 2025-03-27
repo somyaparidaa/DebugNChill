@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { User, Award, Clock, Recycle, Monitor, Battery, Cpu, Calendar } from "lucide-react";
-import { doc, getDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import { db, auth } from "../firebase/firebase";
-import "../styles/InnerDash.css";
+import React, { useState } from 'react';
+import {
+  Monitor,
+  Battery,
+  Cpu,
+  Calendar,
+  User,
+  Award,
+  Clock,
+  Recycle,
+  ChevronDown,
+  ChevronUp
+} from 'lucide-react';
 import {
   BarChart,
   Bar,
@@ -15,181 +21,181 @@ import {
   Legend,
   ResponsiveContainer
 } from 'recharts';
+import '../styles/InnerDash.css';
 
-const recyclingData = [
-  { month: "Jan", electronics: 4, metals: 3 },
-  { month: "Feb", electronics: 3, metals: 4 },
-  { month: "Mar", electronics: 5, metals: 2 },
-];
+function RecyclingDashboard() {
+  const [activeSection, setActiveSection] = useState({
+    achievements: true,
+    activity: true,
+    impact: true
+  });
 
-const timelineData = [
-  { date: "2024-03-15", item: "Old Laptop", category: "Electronics", points: 50 },
-  { date: "2024-03-10", item: "Copper Wires", category: "Metals", points: 30 },
-];
+  const [activeFilter, setActiveFilter] = useState('all');
 
-function InnerDash() {
-  const [userName, setUserName] = useState("");
-  const [activeFilter, setActiveFilter] = useState("all");
+  const toggleSection = (section) => {
+    setActiveSection(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const uid = user.uid;
-        try {
-          const userDocRef = doc(db, "users", uid);
-          const userDocSnap = await getDoc(userDocRef);
-          if (userDocSnap.exists()) {
-            const data = userDocSnap.data();
-            if (data.name) {
-              setUserName(data.name);
-            }
-          }
-        } catch (error) {
-          console.error("Error fetching user data:", error);
-        }
-      }
-    });
+  const recyclingData = [
+    { month: "Jan", electronics: 4, metals: 3 },
+    { month: "Feb", electronics: 3, metals: 4 },
+    { month: "Mar", electronics: 5, metals: 2 },
+  ];
 
-    return () => unsubscribe();
-  }, []);
+  const timelineData = [
+    {
+      date: "2024-03-15",
+      item: "Old Laptop",
+      category: "Electronics",
+      points: 50,
+    },
+    {
+      date: "2024-03-10",
+      item: "Copper Wires",
+      category: "Metals",
+      points: 30,
+    },
+  ];
 
-  const filteredTimeline = activeFilter === "all"
+  const filteredTimeline = activeFilter === 'all'
     ? timelineData
     : timelineData.filter(item => item.category.toLowerCase() === activeFilter);
 
+  const statsCards = [
+    { 
+      icon: <Monitor className="stat-icon electronics-icon" />, 
+      title: "Electronics", 
+      value: "12 items",
+      subtitle: "+2 this month"
+    },
+    { 
+      icon: <Battery className="stat-icon batteries-icon" />, 
+      title: "Batteries", 
+      value: "8 items",
+      subtitle: "+1 this month"
+    },
+    { 
+      icon: <Cpu className="stat-icon components-icon" />, 
+      title: "Components", 
+      value: "15 items",
+      subtitle: "+3 this month"
+    },
+    { 
+      icon: <Calendar className="stat-icon points-icon" />, 
+      title: "Total Points", 
+      value: "250",
+      subtitle: "+45 this month"
+    }
+  ];
+
   return (
-    <div className="dashboard-container">
-      {/* User Profile Section */}
-      <div className="profile-card">
-        <div className="profile-header">
-          <div className="profile-avatar">
-            <User size={48} />
-          </div>
-          <div className="profile-info">
-            <h2 className="profile-name">{userName}</h2>
-            <p className="profile-subtitle">Eco Warrior since 2023</p>
-            <div className="profile-badge">
-              <Award size={16} />
-              <span>Level 5 Recycler</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="recycling-dashboard">
+      <div className="main-content">
+        <h1 className="dashboard-welcome">Welcome Back, Yug Agarwal</h1>
 
-      {/* Stats Grid */}
-      <div className="stats-grid">
-        {[
-          { icon: <Monitor />, title: "Electronics", value: "12 items" },
-          { icon: <Battery />, title: "Batteries", value: "8 items" },
-          { icon: <Cpu />, title: "Components", value: "15 items" },
-          { icon: <Calendar />, title: "Total Points", value: "250" }
-        ].map((card, index) => (
-          <div key={index} className="stat-card">
-            <div className="stat-content">
+        <div className="stats-grid">
+          {statsCards.map((card, index) => (
+            <div key={index} className="stat-card">
               {card.icon}
-              <div>
-                <h3 className="stat-title">{card.title}</h3>
-                <p className="stat-value">{card.value}</p>
+              <div className="stat-card-content">
+                <div className="stat-card-title">{card.title}</div>
+                <div className="stat-card-value">{card.value}</div>
+                <div className="stat-card-subtitle">{card.subtitle}</div>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Achievements Section */}
-      <div className="info-section">
-        <div className="section-header">
-          <Award size={20} />
-          <h3>Achievements</h3>
-        </div>
-        <div className="section-content">
-          {[
-            { name: "First Recycling", status: "✓" },
-            { name: "10 Items Recycled", status: "✓" },
-            { name: "Electronics Expert", status: "In Progress" }
-          ].map((achievement, index) => (
-            <div key={index} className="achievement-item">
-              <span className="achievement-name">{achievement.name}</span>
-              <span className="achievement-complete">{achievement.status}</span>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Recycling Statistics */}
-      <div className="chart-container">
-        <h2 className="section-title">Recycling Statistics</h2>
-        <div className="chart-wrapper">
+        <div className="recycling-chart-container">
+          <h2 className="section-title">Recycling Statistics</h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={recyclingData}>
-              <CartesianGrid strokeDasharray="3 3" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#444" />
               <XAxis dataKey="month" />
               <YAxis />
               <Tooltip />
-              <Legend />
               <Bar dataKey="electronics" fill="#10B981" name="Electronics" />
               <Bar dataKey="metals" fill="#3B82F6" name="Metals" />
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
 
-      {/* Recent Activity Section */}
-      <div className="info-section">
-        <div className="section-header">
-          <Clock size={20} />
-          <h3>Recent Activity</h3>
-        </div>
-        <div className="activity-filters">
-          {["All", "Electronics", "Metals"].map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter.toLowerCase())}
-              className={`activity-filter ${activeFilter === filter.toLowerCase() ? "active" : ""}`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        <div className="timeline">
-          {filteredTimeline.map((item, index) => (
-            <div key={index} className="timeline-item">
-              <div className="timeline-marker"></div>
-              <div className="timeline-content">
-                <p className="timeline-date">{item.date}</p>
-                <div className="timeline-item-header">
-                  <h3 className="timeline-title">{item.item}</h3>
-                  <span className="timeline-category">{item.category}</span>
+        <div className="recent-activity-container">
+          <div className="activity-header">
+            <h2 className="section-title">Recent Activity</h2>
+            <div className="activity-filters">
+              {['All', 'Electronics', 'Metals'].map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter.toLowerCase())}
+                  className={`filter-button ${activeFilter === filter.toLowerCase() ? 'active' : ''}`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          <div className="activity-timeline">
+            {filteredTimeline.map((item, index) => (
+              <div key={index} className="timeline-item">
+                <div className="timeline-content">
+                  <div className="timeline-date">{item.date}</div>
+                  <div className="timeline-item-details">
+                    <div className="timeline-item-name">{item.item}</div>
+                    <div className="timeline-item-category">{item.category}</div>
+                  </div>
+                  <div className="timeline-points">+{item.points} pts</div>
                 </div>
-                <p className="timeline-points">+{item.points} points</p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Impact Stats */}
-      <div className="info-section">
-        <div className="section-header">
-          <Recycle size={20} />
-          <h3>Impact Stats</h3>
+      <div className="profile-sidebar">
+        <div className="profile-header">
+          <div className="profile-avatar">
+            <User size={48} />
+          </div>
+          <h2 className="profile-name">John Doe</h2>
+          <p className="profile-subtitle">Eco Warrior since 2023</p>
+          <div className="profile-level-badge">Level 5 Recycler</div>
         </div>
-        <div className="section-content">
-          {[
-            { label: "Total Items Recycled", value: "35" },
-            { label: "CO₂ Saved", value: "250kg" },
-            { label: "Points Earned", value: "1,250" }
-          ].map((stat, index) => (
-            <div key={index} className="stat-item">
-              <span className="stat-label">{stat.label}</span>
-              <span className="stat-value">{stat.value}</span>
-            </div>
-          ))}
+
+        <div className="profile-progress">
+          <div className="progress-bar">
+            <div className="progress-fill"></div>
+          </div>
+          <div className="progress-text">Next Level: 25% to go</div>
+        </div>
+
+        <div className="profile-achievements">
+          <div className="section-header">
+            <Award />
+            <h3>Achievements</h3>
+          </div>
+          <div className="achievements-list">
+            {[
+              { name: "First Recycling", status: "completed" },
+              { name: "10 Items Recycled", status: "completed" },
+              { name: "Electronics Expert", status: "in-progress" }
+            ].map((achievement, index) => (
+              <div key={index} className="achievement-item">
+                <span>{achievement.name}</span>
+                <span className={`achievement-status ${achievement.status}`}>
+                  {achievement.status === 'completed' ? '✓' : 'In Progress'}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default InnerDash;
+export default RecyclingDashboard;

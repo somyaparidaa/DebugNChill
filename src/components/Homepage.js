@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import "../styles/Homepage.css";
-
+import { Link } from "react-router";
 const Hero = () => {
   const typedTextRef = useRef(null);
 
@@ -31,7 +31,9 @@ const Hero = () => {
           <h1 className="hero-title">
             <span ref={typedTextRef}></span>
           </h1>
-          <button className="hero-button">Get Started</button>
+          <Link to="/login" className="hero-button" >
+        Get Started
+      </Link>
         </div>
       </div>
     </section>

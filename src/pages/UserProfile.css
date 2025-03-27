@@ -1,8 +1,7 @@
 /* App.css */
 
 .app-container {
-  min-height: 100vh;
-  background-color: #f9fafb; /* Equivalent to Tailwind's bg-gray-50 */
+  background-color: #1e1e1e;
   display: flex;
   flex-direction: column;
 }
