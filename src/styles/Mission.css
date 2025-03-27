@@ -1,4 +1,6 @@
 /* Header section */
+
+
 .header {
   padding: 20px;
   background-color: white;
@@ -15,7 +17,7 @@
 }
 
 .content {
-  font-size: 14px;
+  font-size: 18px;
   color: #333;
   padding-left: 200px;
   padding-right: 200px;
@@ -28,10 +30,13 @@
   /* text-align: center; */
 }
 
+
+
+
 .mission-section h2 {
   font-size: 22px;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 40px;
   font-family: "IM Fell English", serif;
   letter-spacing: 1px;
 }
@@ -47,11 +52,7 @@
 }
 
 /* Mission cards */
-<<<<<<< HEAD
-.mission-card { 
-=======
 .mission-card {
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
   position: relative;
   width: 225px;
   /* padding: 20px; */
@@ -60,9 +61,9 @@
   color: white;
   text-align: center;
   font-size: 16px;
-  box-shadow: 25px 25px 15px #d1a853;
+  box-shadow: 10px 10px 10px #ffdd57;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 10px;
+  margin: 15px;
   height: 350 px;
   perspective: 1000px; /* Enables 3D effect */
   transform-style: preserve-3d;
@@ -81,11 +82,7 @@
   font-family: "IM Fell English", serif;
   text-align: center;
   /* padding: 20px 13px; */
-<<<<<<< HEAD
-  margin:10px 10px;
-=======
   margin: 10px 10px;
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
   font-size: 17px;
   font-weight: 100;
 
@@ -97,12 +94,8 @@
   box-shadow: 5px 10px 10px rgba(27, 22, 22, 0.3);
 }
 
-<<<<<<< HEAD
-.mission-card-front, .mission-card-back {
-=======
 .mission-card-front,
 .mission-card-back {
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
   width: 225px;
   height: 350px;
   position: absolute;
@@ -111,30 +104,19 @@
   border-radius: 15px;
   text-align: center;
   /* padding: 20px; */
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-<<<<<<< HEAD
 } 
 
 /* Front Side */
- .mission-card-front {
-=======
-}
-
-/* Front Side */
 .mission-card-front {
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
   background-color: #234a35;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
 /* Grid for 4 images */
 /* .image-grid {
   display: grid;
@@ -153,11 +135,7 @@
 
 /* Back Side */
 .mission-card-back {
-<<<<<<< HEAD
-  background-color: #2CA577;
-=======
   background-color: #2ca577;
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
   color: white;
   transform: rotateY(180deg);
   display: flex;
@@ -177,7 +155,7 @@
 
 /* Button Styling */
 .btn {
-  background-color: #ffdd57;
+  background-color: #ffcc33;
   color: black;
   border: none;
   padding: 10px 15px;
@@ -191,16 +169,16 @@
 }
 
 .btn:hover {
-  background-color: #ffcc33;
+  background-color: #ffdd57;
 }
 
 /* Back Button */
 .back-btn {
-  background-color: #ff5757;
+  background-color: #ffcc33;
 }
 
 .back-btn:hover {
-  background-color: #ff3333;
+  background-color: #ffdd57;
 }
 
 /* Responsive styles */

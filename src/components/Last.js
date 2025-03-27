@@ -16,9 +16,8 @@ const Last = () => {
   });
 
   return (
-    <section id="last">
-      <div className="container">
-        {/* How We Work Section */}
+    <section className="last">
+      <div className="containers">
         <section className="how-it-works">
           <h2>How we work?</h2>
           <div className="steps">

@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import React,{useState} from "react";
-=======
 import React, { useState } from "react";
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
 import "../styles/Mission.css";
 import img1 from "../images/mission1.png";
 import img2 from "../images/E-Waste2.jpeg";
 import img3 from "../images/E-Waste3.jpeg";
-<<<<<<< HEAD
-import img4 from "../images/E-Waste7.webp";
-=======
-import img4 from "../images/E-Waste3.jpeg";
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
+import img4 from "../images/E-Waste8.jpg";
 
 const Header = () => {
   return (
@@ -26,21 +18,6 @@ const Header = () => {
   );
 };
 
-<<<<<<< HEAD
-const MissionCard = ({ images, title, shortText, fullText  }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  return (
-    <div className={`mission-card ${isFlipped ? "flipped" : ""}`}>
-    {/* Front Side */}
-    <div className="mission-card-front">
-      <div className="image-grid">
-        {images.map((img, index) => (
-          <img key={index} src={img} alt="E-waste" className="grid-image" />
-        ))}
-      </div>
-      <p className="text-Color">{shortText}</p>
-      <button className="btn" onClick={() => setIsFlipped(true)}>Learn More</button>
-=======
 const MissionCard = ({ images, title, shortText, fullText }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   return (
@@ -65,15 +42,8 @@ const MissionCard = ({ images, title, shortText, fullText }) => {
           Back
         </button>
       </div>
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
     </div>
 
-    {/* Back Side */}
-    <div className="mission-card-back">
-      <p className="text-Color">{fullText}</p>
-      <button className="btn back-btn" onClick={() => setIsFlipped(false)}>Back</button>
-    </div>
-  </div>
 );
 };
 
@@ -81,57 +51,28 @@ const MissionSection = () => {
   const missions = [
     {
       title: "Reduce E-Waste",
-<<<<<<< HEAD
-      shortText: "Reduce e-waste pollution by encouraging responsible disposal.",
-      fullText: "We promote responsible e-waste disposal by educating people about safe recycling and offering convenient drop-off points for old electronics.",
-      images: [img1]
-    },
-    {
-      title: "Extend Life of Electronics",
-      shortText: "Extend the life of electronics through repair, recycle and reuse.",
-      fullText: "By refurbishing and repairing electronics, we extend their lifespan and reduce unnecessary waste, making tech more accessible to everyone.",
-      images: [img2]
-=======
-      shortText:
-        "Reduce e-waste pollution by encouraging responsible disposal.",
-      fullText:
-        "We promote responsible e-waste disposal by educating people about safe recycling and offering convenient drop-off points for old electronics.",
+      shortText:"Reduce e-waste pollution by encouraging responsible disposal.",
+      fullText:"We promote responsible e-waste disposal by educating people about safe recycling and offering convenient drop-off points for old electronics.",
       images: [img1],
     },
     {
       title: "Extend Life of Electronics",
-      shortText:
-        "Extend the life of electronics through repair, recycle and reuse.",
-      fullText:
-        "By refurbishing and repairing electronics, we extend their lifespan and reduce unnecessary waste, making tech more accessible to everyone.",
+      shortText:"Extend the life of electronics through repair, recycle and reuse.",
+      fullText:"By refurbishing and repairing electronics, we extend their lifespan and reduce unnecessary waste, making tech more accessible to everyone.",
       images: [img2],
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
     },
     {
       title: "Raise Awareness",
       shortText: "Raise awareness about sustainable tech practices.",
-<<<<<<< HEAD
-      fullText: "We conduct workshops and campaigns to educate individuals and businesses about sustainable technology and eco-friendly practices.",
-      images: [img3]
-=======
-      fullText:
-        "We conduct workshops and campaigns to educate individuals and businesses about sustainable technology and eco-friendly practices.",
+      fullText:"We conduct workshops and campaigns to educate individuals and businesses about sustainable technology and eco-friendly practices.",
       images: [img3],
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
     },
     {
       title: "Improve Accessibility",
       shortText: "Make our services as accessible as possible.",
-<<<<<<< HEAD
-      fullText: "We strive to provide e-waste recycling and repair services in every city, making it easy for everyone to participate in sustainability.",
-      images: [img4]
-    }
-=======
-      fullText:
-        "We strive to provide e-waste recycling and repair services in every city, making it easy for everyone to participate in sustainability.",
+      fullText:"We strive to provide e-waste recycling and repair services in every city, making it easy for everyone to participate in sustainability.",
       images: [img4],
     },
->>>>>>> d6ed64c9dd7dca7b58b0ca1c606fce2f56cf0399
   ];
 
   return (
