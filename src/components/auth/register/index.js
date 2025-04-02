@@ -143,6 +143,7 @@ const Register = () => {
     }
   };
 
+  // confirmPassword
   const handleConfirmPasswordChange = (e) => {
     const value = e.target.value;
     setConfirmPassword(value);
