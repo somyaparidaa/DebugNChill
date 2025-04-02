@@ -308,5 +308,12 @@
   .recycle-button:hover {
     background-color: #218c63;
   }
-  
-  
+
+  .dashboard-navigation {
+    margin-top: var(--spacing-sm);
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

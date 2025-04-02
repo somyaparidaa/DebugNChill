@@ -3,6 +3,8 @@ import "../styles/Dashboard.css";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
+  const [activeTab, setActiveTab] = useState('overview');
+
   // Sample data for the dashboard
   const stats = {
     totalCollected: 4827,
@@ -37,6 +39,11 @@ const Dashboard = () => {
       co2Reduced: 78.4,
       waterSaved: 1243,
       energySaved: 36712
+    },
+    recyclingEfficiency: {
+      reused: 45,
+      recycled: 35,
+      landfill: 20
     }
   };
 
@@ -173,32 +180,5 @@ const Dashboard = () => {
     </div>
   );
 };
-
-// Helper functions for styling
-function getDeviceColor(device) {
-  const colors = {
-    smartphones: "#2CA577",
-    laptops: "#3498db",
-    computers: "#9b59b6",
-    tablets: "#e67e22",
-    peripherals: "#f1c40f"
-  };
-  return colors[device] || "#2ecc71";
-}
-
-function getMaterialColor(material) {
-  const colors = {
-    plastic: "#3498db",
-    metals: "#95a5a6",
-    rareEarth: "#e74c3c",
-    glass: "#1abc9c"
-  };
-  return colors[material] || "#2ecc71";
-}
-
-function formatMaterialName(material) {
-  if (material === "rareEarth") return "Rare Earth Metals";
-  return material.charAt(0).toUpperCase() + material.slice(1);
-}
 
 export default Dashboard;

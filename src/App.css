@@ -45,7 +45,7 @@
 
 .app-containers {
   width: 100%;
-  height: 100vh; 
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   /* Add or remove any styling you want here */
