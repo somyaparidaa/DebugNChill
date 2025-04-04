@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../styles/InnerDash.css"
 import {
   Monitor,
   Battery,
@@ -9,7 +10,9 @@ import {
   Clock,
   Recycle,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Newspaper,
+  ExternalLink
 } from 'lucide-react';
 import {
   BarChart,
@@ -58,6 +61,28 @@ function RecyclingDashboard() {
       category: "Metals",
       points: 30,
     },
+  ];
+
+  // E-Waste News Data
+  const ewasteNews = [
+    {
+      headline: "New E-Waste Recycling Center Opens",
+      date: "April 1, 2025",
+      summary: "A state-of-the-art e-waste recycling facility has opened in the downtown area, making it easier for residents to dispose of electronics responsibly.",
+      link: "#"
+    },
+    {
+      headline: "Study Shows Rising E-Waste Concerns",
+      date: "March 28, 2025",
+      summary: "Recent research indicates that e-waste is growing at 3x the rate of regular municipal waste. Learn how you can help reduce the impact.",
+      link: "#"
+    },
+    {
+      headline: "Mobile Recycling Program This Weekend",
+      date: "March 25, 2025",
+      summary: "The mobile recycling unit will be at Central Park this Saturday from 9am-2pm. Bring your old devices and earn extra recycling points!",
+      link: "#"
+    }
   ];
 
   const filteredTimeline = activeFilter === 'all'
@@ -110,7 +135,7 @@ function RecyclingDashboard() {
         </div>
 
         <div className="recycling-chart-container">
-          <h2 className="section-title">Recycling Statistics</h2>
+          <h2 className="section-titles">Recycling Statistics</h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={recyclingData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#444" />
@@ -125,7 +150,7 @@ function RecyclingDashboard() {
 
         <div className="recent-activity-container">
           <div className="activity-header">
-            <h2 className="section-title">Recent Activity</h2>
+            <h2 className="section-titles">Recent Activity</h2>
             <div className="activity-filters">
               {['All', 'Electronics', 'Metals'].map((filter) => (
                 <button
@@ -193,6 +218,25 @@ function RecyclingDashboard() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* E-Waste News Component */}
+      <div className="ewaste-news-container">
+        <div className="news-title">
+          <Newspaper size={20} />
+          <span>E-Waste News & Updates</span>
+        </div>
+        
+        {ewasteNews.map((news, index) => (
+          <div key={index} className="news-item">
+            <div className="news-headline">{news.headline}</div>
+            <div className="news-date">{news.date}</div>
+            <div className="news-summary">{news.summary}</div>
+            <a href={news.link} className="news-link">
+              Read more <ExternalLink size={14} style={{ verticalAlign: 'middle' }} />
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );

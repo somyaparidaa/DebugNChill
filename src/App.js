@@ -41,7 +41,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="app-containers">
+        <div className="app-containerss">
           <AppRoutes />
         </div>
       </AuthProvider>

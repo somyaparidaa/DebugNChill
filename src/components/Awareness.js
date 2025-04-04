@@ -1,7 +1,7 @@
 import React from "react";
 import { AlertTriangle, Info, TreeDeciduous } from "lucide-react";
 import "../styles/Awareness.css"; // Import the separate CSS file
-// import img5 from "../images/image.png";
+import img5 from "../images/image.png";
 
 const facts = [
   {
@@ -28,7 +28,7 @@ function Awareness() {
   return (
     <div className="awareness-container">
       <div className="awareness-card">
-        <h2 className="section-title">E-Waste Awareness</h2>
+        <h2 className="sections-title">E-Waste Awareness</h2>
 
         <div className="facts-grid">
           {facts.map((fact, index) => (
@@ -48,7 +48,7 @@ function Awareness() {
         <div className="impact-grid">
           <div className="image-container">
             <img
-              src="../images/image.png"
+              src={img5}
               alt="E-waste recycling"
               className="impact-image"
             />

@@ -6,9 +6,9 @@ import "./UserProfile.css"; // Importing the CSS file
 
 const UserProfile = () => {
   return (
-    <div className="app-container">
+    <div className="app-containers">
       <InnerDav />
-      <div className="content">
+      <div className="contents">
         <Outlet /> {/* This renders nested routes */}
       </div>
       <Chatbot />

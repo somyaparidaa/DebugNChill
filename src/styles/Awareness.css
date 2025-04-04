@@ -23,7 +23,7 @@
 }
 
 
-.section-title {
+.sections-title {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -32,7 +32,7 @@
   padding-left: 1rem;
 }
 
-.section-title::before {
+.sections-title::before {
   content: '';
   position: absolute;
   left: 0;

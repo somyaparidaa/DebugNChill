@@ -1,17 +1,17 @@
 /* Container for the entire footer + FAQ sections */
 .full-width-container {
   width: 100%;
-  padding: 20px;
+  /* padding: 20px; */
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
 /* FAQ Section */
 .faq-section {
-  margin-bottom: 60px;
+  margin-bottom: 0px;
   background-color: #fff; /* Ensure FAQ has white background */
   color: #333; /* Ensure dark text */
-  padding: 20px 0;
+  padding: 50px 0;
 }
 
 .faq-section h2 {
@@ -72,118 +72,107 @@
 }
 
 /* Footer */
+:root {
+  --color-text: #b0b0b0;
+  --color-golden: #d1a853;
+  --color-accent: #ff9800;
+}
+
 .footer {
-  background-color: #222; /* Dark background */
-  padding: 50px 20px;
-  margin-top: 60px;
-  color: white;
-  width: 100%;
-  box-sizing: border-box;
+  background-color: #222;
+  color: var(--color-text);
+  padding: 2rem ;
+  
+  
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-around; /* Align horizontally */
-  align-items: center;
-  max-width: 1000px;
+.footer-container {
+  max-width: 80rem;
   margin: 0 auto;
-  padding: 0 20px;
-  flex-wrap: wrap; /* Ensure responsiveness on smaller screens */
+  padding: 0 1rem;
 }
 
-/* Make each section (logo, contact, social) flexible and centered */
-.footer-logo,
-.footer-contact,
-.social-media {
-  flex: 1;
-  text-align: center;
-  margin: 10px 0;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
 }
 
-/* Logo Section */
-.footer-logo h2 {
-  font-size: 32px; /* Increase size of the logo text */
-  margin: 0;
-  color: #ffcc00;
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-.tagline {
-  font-style: italic;
-  margin-top: 5px;
-  color: #ccc;
-  font-size: 14px;
+.footer-section {
+  margin-bottom: 1.5rem;
 }
 
-/* Contact Section */
-.footer-contact h3 {
-  font-size: 22px; /* Increase heading size */
-  margin-bottom: 15px;
-  color: #ffcc00;
-}
-
-.footer-contact p {
-  margin: 5px 0;
-  color: #ddd;
-  font-size: 16px; /* Slightly larger paragraph text */
-}
-
-/* Social Media Section */
-.social-media h3 {
-  font-size: 22px; /* Increase heading size */
-  margin-bottom: 10px;
-  color: #ffcc00;
-}
-
-.social-icons {
+.brand {
   display: flex;
-  gap: 15px;
-  justify-content: center; /* Center icons horizontally */
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
-.social-icon {
-  font-size: 24px;
-  color: white;
-  transition: transform 0.3s ease, color 0.3s ease;
+.brand-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-golden);
 }
 
-.social-icon:hover {
-  transform: scale(1.2);
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d1a853;
+  margin-left: 0.5rem;
 }
 
-.facebook:hover {
-  color: #1877f2;
+.brand-highlight {
+  color: var(--color-golden);
 }
 
-.instagram:hover {
-  color: #e4405f;
+.footer-title {
+  margin-top: 0rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color:#d1a853;
 }
 
-.twitter:hover {
-  color: #1da1f2;
+.footer-list {
+  list-style: none;
+  padding: 0;
 }
 
-/* Footer Bottom */
+.footer-link {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: var(--color-golden);
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-golden);
+}
+
+.footer-text {
+  color: var(--color-text);
+}
+
 .footer-bottom {
-  margin-top: 30px;
   text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #444;
-  color: #aaa;
-  font-size: 14px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-logo,
-  .footer-contact,
-  .social-media {
-    flex: none;
-    margin-top: 20px;
-  }
+  margin-top: 2rem;
+  /* margin-bottom: 1rem; */
 }

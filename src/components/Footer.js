@@ -7,6 +7,7 @@ import {
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { Diamond, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const [expandedFaq, setExpandedFaq] = useState(null);
@@ -102,61 +103,59 @@ const Footer = () => {
 
         {/* Footer Section */}
         <footer className="footer">
-          <div className="footer-content">
-            <div className="footer-logo">
-              <h2>TechCycle</h2>
-              <p className="tagline">Recycle, reborn, Revive!</p>
-            </div>
-
-            <div className="footer-contact">
-              <h3>CONTACT US</h3>
-              <p>+91 9XXXXXXXX</p>
-              <p>TechCycle@gmail.com</p>
-              <p>537 Kandivali, Sector 3, Mumbai, India</p>
-            </div>
-
-            {/* Social Media Icons */}
-            <div className="social-media">
-              <h3>Follow Us</h3>
-              <div className="social-icons">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FontAwesomeIcon
-                    icon={faFacebook}
-                    className="social-icon facebook"
-                  />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FontAwesomeIcon
-                    icon={faInstagram}
-                    className="social-icon instagram"
-                  />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FontAwesomeIcon
-                    icon={faTwitter}
-                    className="social-icon twitter"
-                  />
-                </a>
+      <div className="footer-container">
+        <div className="grid-container">
+          <div className="footer-section">
+            <div className="brand">
+              {/* <Diamond className="brand-icon" /> */}
+              <div className="brand-name">
+                TechCycle
               </div>
             </div>
+            <p className="footer-text">
+              Recycle,reborn,Relive!
+            </p>
           </div>
-
-          <div className="footer-bottom">
-            <p>&copy; 2025 TechCycle. All rights reserved.</p>
+          <div className="footer-section">
+            <h3 className="footer-title">Quick Links</h3>
+            <ul className="footer-list">
+              <li><a href="#home" className="footer-link">Home</a></li>
+              <li><a href="#about" className="footer-link">About ss</a></li>
+              <li><a href="#features" className="footer-link">Contact us</a></li>
+              <li><a href="#testimonials" className="footer-link">FAQs</a></li>
+            </ul>
           </div>
-        </footer>
+          <div className="footer-section">
+            <h3 className="footer-title">CONTACT US</h3>
+            <ul className="footer-list">
+              <li className="footer-item">
+                <Mail className="footer-icon" />
+                <span className="footer-text">techcycle@ac.in</span>
+              </li>
+              <li className="footer-item">
+                <Phone className="footer-icon" />
+                <span className="footer-text">+91 637006XXXX</span>
+              </li>
+              <li className="footer-item">
+                <MapPin className="footer-icon" />
+                <span className="footer-text">National Institute of Technology, Rourkela</span>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h3 className="footer-title">Legal</h3>
+            <ul className="footer-list">
+              <li><a href="#" className="footer-link">Privacy Policy</a></li>
+              <li><a href="#" className="footer-link">Terms of Service</a></li>
+              <li><a href="#" className="footer-link">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p className="footer-text">© 2025 TechCycle. All rights reserved.</p>
+      </div>
+    </footer>
       </div>
     </section>
   );

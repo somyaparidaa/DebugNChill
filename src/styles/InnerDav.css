@@ -6,6 +6,7 @@
   background-color: #0a3d2e;
   color: white;
   padding: 15px 20px;
+  z-index: 1000;
 }
 
 .navbar-container {
@@ -77,10 +78,40 @@
   background: #ddd;
 }
 
-/* Dark Mode */
+/* Dark Mode Styles */
 .dark-mode {
- 
-  color: white;
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* Dark mode navbar */
+.dark-mode .navbar {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+/* Dark mode dropdown menu */
+.dark-mode .dropdown-menu {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .dropdown-menu a {
+  color: #f0f0f0;
+}
+
+.dark-mode .dropdown-menu a:hover {
+  background-color: #3a3a3a;
+}
+
+/* Dark mode for other elements */
+.dark-mode .icon-btn {
+  color: #f0f0f0;
+}
+
+.dark-mode .logo-link {
+  color: #f0f0f0;
 }
 
 /* Fade-in Effect */

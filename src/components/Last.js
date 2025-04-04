@@ -16,15 +16,16 @@ const Last = () => {
   });
 
   return (
-    <section className="last">
+    <section id="last">
       <div className="containers">
+        {/* How We Work Section */}
         <section className="how-it-works">
           <h2>How we work?</h2>
           <div className="steps">
             <div className="step">
               <div className="icon">🚚</div>
               <div className="step-content">
-                <h3>You drop off/pick a schedule</h3>
+                <h3>You drop off/pick schedule</h3>
                 <p>We collect your old electronics from homes & businesses.</p>
               </div>
             </div>
@@ -80,7 +81,7 @@ const Last = () => {
                   </label>
                 </div>
 
-                <button type="submit">Submit Request</button>
+                <button className="btns" type="submit">Submit Request</button>
               </form>
             </div>
           </div>

@@ -188,7 +188,7 @@ function RecyclingMap() {
             {markers.map((m) => (
               <div key={m.id} className="center-card">
                 <div className="center-info">
-                  <MapPin className="icon" />
+                  <MapPin className="icons" />
                   <div>
                     <h4 className="center-name">{m.name}</h4>
                     <p className="center-address">{m.address}</p>
