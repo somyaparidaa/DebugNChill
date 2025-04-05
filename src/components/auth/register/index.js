@@ -214,20 +214,7 @@ const Register = () => {
           <h3>Create a New Account</h3>
         </div>
         <form onSubmit={onSubmit} className="register-form">
-          {/* New Name Field */}
-          <div className="form-group">
-            <label>Name</label>
-            <input
-              type="text"
-              autoComplete="name"
-              required
-              placeholder="Enter your name"
-              value={name}
-              onChange={handleNameChange}
-            />
-          </div>
-
-          <div className="form-group">
+          <div className="forms-group">
             <label>Email</label>
             <input
               type="email"
@@ -239,7 +226,7 @@ const Register = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="forms-group">
             <label>Password</label>
             <input
               type="password"
@@ -252,7 +239,7 @@ const Register = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="forms-group">
             <label>Confirm Password</label>
             <input
               type="password"

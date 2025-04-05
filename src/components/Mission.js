@@ -4,24 +4,45 @@ import img1 from "../images/mission1.png";
 import img2 from "../images/E-Waste2.jpeg";
 import img3 from "../images/E-Waste3.jpeg";
 import img4 from "../images/E-Waste8.jpg";
+import { Link } from "react-router";
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="header-content">
-        <h1 className="animated-text">
-          <span>Redefining</span> 
-          <span>E-Waste</span>
-          <span>One Device at a Time!</span>
-        </h1>
-        <p className="contents">
-          At <span className="highlight">TechCycle</span>, we believe in a future where technology 
-          and sustainability dance in perfect harmony. E-waste is the fastest-growing 
-          waste stream in the world, and we're here to transform this challenge 
-          into an opportunity for positive change.
-        </p>
+    <div className="banner">
+      <div className="banner_floating-element banner_floating-element--1"></div>
+      <div className="banner_floating-element banner_floating-element--2"></div>
+      <div className="banner_floating-element banner_floating-element--3"></div>
+      <div className="banner__content">
+        <div className="banner__left-content">
+          <h1 className="banner__heading">
+            Transform <span className="banner__highlight">E-Waste</span> Into Environmental Impact
+          </h1>
+          <p className="banner__paragraph">
+            Join the sustainable tech revolution with every device you recycle.
+          </p>
+          <Link to="/login" className="banner__cta-button">Start Recycling Today</Link>
+        </div>
+        <div className="banner__right-content">
+          <div className="banner__circle-pattern"></div>
+          <p className="banner__paragraph">
+            At <span className="banner__company-name">TechCycle</span>, we believe in a future where 
+            technology and sustainability dance in perfect harmony. E-waste is the fastest-growing 
+            waste stream in the world, and we're here to transform this challenge into an opportunity 
+            for positive change.
+          </p>
+          <div className="banner__stats-container">
+            <div className="banner__stat-item">
+              <span className="banner__stat-number">57M</span>
+              <span className="banner__stat-label">Tons of E-Waste Annually</span>
+            </div>
+            <div className="banner__stat-item">
+              <span className="banner__stat-number">95%</span>
+              <span className="banner__stat-label">Recyclable Materials</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
+    </div>
   );
 };
 
@@ -92,7 +113,7 @@ const MissionSection = () => {
   ];
 
   return (
-    <section className="mission-section">
+    <section className="missions-section">
       <div className="mission-section-header">
         <h2 className="section-title">OUR MISSION</h2>
         {/* <p className="section-subtitle">

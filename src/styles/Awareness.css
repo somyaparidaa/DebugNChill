@@ -1,8 +1,8 @@
 :root {
   --primary-green: #16a34a;
   --light-green: #f0f9f0;
-  --text-dark: #1f2937; /* Darker text for visibility */
-  --text-light: #374151; /* Dark gray instead of too light */
+  --text-dark: #374151 ;
+  --text-light: #6b7280;
   --transition-speed: 0.3s;
   --border-radius: 0.75rem;
 }
@@ -162,9 +162,8 @@
 .impact-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-dark);
   margin-bottom: 1rem;
-  padding-left: 1rem;
+  color: #000;
   position: relative;
 }
 
@@ -205,6 +204,7 @@
   width: 0.625rem;
   height: 0.625rem;
   background-color: var(--primary-green);
+  color: #000;
   border-radius: 50%;
   animation: pulse 1.5s infinite alternate;
 }
