@@ -212,7 +212,7 @@ body {
 }
 
 /* Footer CTA Section */
-.footer-section {
+/* .footer-section {
   margin-top: 2.5rem;
 }
 
@@ -257,8 +257,9 @@ body {
 .cta-button:hover {
   background-color: #15803d;
 }
+*/
 
-/* Tab transitions */
+
 .charts-section, .metrics-section {
   animation: fadeIn 0.3s ease-in-out;
 }
@@ -268,7 +269,6 @@ body {
   to { opacity: 1; }
 }
 
-/* Responsive Adjustments */
 @media (max-width: 1024px) {
   .metrics-container {
     grid-template-columns: repeat(2, 1fr);
@@ -281,7 +281,7 @@ body {
   .detailed-metric {
     grid-column: span 1;
   }
-}
+} 
 
 @media (max-width: 640px) {
   .header-content {
