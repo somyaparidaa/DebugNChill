@@ -113,7 +113,7 @@ const MissionSection = () => {
   ];
 
   return (
-    <section className="mission-section">
+    <section className="missions-section">
       <div className="mission-section-header">
         <h2 className="section-title">OUR MISSION</h2>
         {/* <p className="section-subtitle">

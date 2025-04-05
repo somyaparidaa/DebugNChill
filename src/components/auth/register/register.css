@@ -78,19 +78,19 @@
   gap: 1.5rem;
 }
 
-.form-group {
+.forms-group {
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.forms-group label {
   font-size: 0.875rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 0.5rem;
 }
 
-.form-group input {
+.forms-group input {
   width: 100%;
   padding: 0.75rem 1rem;
   color: white;
@@ -101,16 +101,16 @@
   transition: all 0.3s ease;
 }
 
-.form-group input:focus {
+.forms-group input:focus {
   border-color: #4ecca3;
   box-shadow: 0 0 0 3px rgba(78, 204, 163, 0.3);
 }
 
-.form-group input.valid {
+.forms-group input.valid {
   border-color: #4ecca3;
 }
 
-.form-group input.invalid {
+.forms-group input.invalid {
   border-color: #dc2626;
 }
 
