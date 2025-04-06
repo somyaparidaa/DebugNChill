@@ -2,10 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Navigate, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/authContext";
 import { doCreateUserWithEmailAndPassword } from "../../../firebase/auth";
-import { updateProfile } from "firebase/auth"; // import updateProfile from firebase/auth
-// If using Firestore, import your firestore instance and methods:
-// import { db } from "../../../firebase/firebase";
-// import { doc, setDoc } from "firebase/firestore";
+import { updateProfile } from "firebase/auth";
 import "./register.css";
 
 const Register = () => {
@@ -15,7 +12,7 @@ const Register = () => {
   const circuitBoardRef = useRef(null);
   const ewasteElementsRef = useRef(null);
 
-  const [name, setName] = useState(""); // new state for name
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,22 +21,18 @@ const Register = () => {
   const [isCardActive, setIsCardActive] = useState(false);
 
   useEffect(() => {
-    // Add animation when component mounts
     const timer = setTimeout(() => {
       setIsCardActive(true);
     }, 100);
 
-    // Initialize background animations
     drawCircuitBoard();
     createEwasteElements();
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Draw circuit board background
   const drawCircuitBoard = () => {
     if (!circuitBoardRef.current) return;
-
     let paths = "";
     const numLines = 50;
 
@@ -59,10 +52,8 @@ const Register = () => {
     circuitBoardRef.current.innerHTML = paths;
   };
 
-  // Create floating e-waste elements
   const createEwasteElements = () => {
     if (!ewasteElementsRef.current) return;
-
     const elements = [
       '<svg width="60" height="60" viewBox="0 0 24 24" fill="#4ecca3" opacity="0.6" xmlns="http://www.w3.org/2000/svg"><path d="M20 18C21.1 18 22 17.1 22 16V6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V16C2 17.1 2.9 18 4 18H0V20H24V18H20ZM4 6H20V16H4V6Z"/></svg>',
       '<svg width="50" height="50" viewBox="0 0 24 24" fill="#4ecca3" opacity="0.6" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.01L7 1C5.9 1 5 1.9 5 3V21C5 22.1 5.9 23 7 23H17C18.1 23 19 22.1 19 21V3C19 1.9 18.1 1.01 17 1.01ZM17 19H7V5H17V19ZM12 18C12.83 18 13.5 17.33 13.5 16.5C13.5 15.67 12.83 15 12 15C11.17 15 10.5 15.67 10.5 16.5C10.5 17.33 11.17 18 12 18Z"/></svg>',
@@ -101,22 +92,13 @@ const Register = () => {
 
       setIsRegistering(true);
       try {
-        // Create user with email and password
         const userCredential = await doCreateUserWithEmailAndPassword(
           email,
           password
         );
         const user = userCredential.user;
 
-        // Option 1: Update Firebase Auth profile with the display name
         await updateProfile(user, { displayName: name });
-
-        // Option 2 (Optional): Save extra data in Firestore
-        // await setDoc(doc(db, "users", user.uid), {
-        //   name: name,
-        //   email: email,
-        //   createdAt: new Date()
-        // });
 
         navigate("/profile");
       } catch (error) {
@@ -137,7 +119,6 @@ const Register = () => {
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
-
     const emailInput = e.target;
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
@@ -155,7 +136,6 @@ const Register = () => {
   const handlePasswordChange = (e) => {
     const value = e.target.value;
     setPassword(value);
-
     const passwordInput = e.target;
     const isStrongPassword = value.length >= 8;
 
@@ -173,7 +153,6 @@ const Register = () => {
   const handleConfirmPasswordChange = (e) => {
     const value = e.target.value;
     setConfirmPassword(value);
-
     const confirmInput = e.target;
     const isMatching = value === password;
 
@@ -194,7 +173,6 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      {/* Background elements */}
       <svg
         ref={circuitBoardRef}
         className="circuit-board"
@@ -205,7 +183,6 @@ const Register = () => {
 
       <div ref={ewasteElementsRef} className="ewaste-elements"></div>
 
-      {/* Register card */}
       <main
         ref={registerCardRef}
         className={`register-card ${isCardActive ? "active" : ""}`}
@@ -214,6 +191,18 @@ const Register = () => {
           <h3>Create a New Account</h3>
         </div>
         <form onSubmit={onSubmit} className="register-form">
+          <div className="forms-group">
+            <label>Full Name</label>
+            <input
+              type="text"
+              autoComplete="name"
+              required
+              placeholder="Enter your full name"
+              value={name}
+              onChange={handleNameChange}
+            />
+          </div>
+
           <div className="forms-group">
             <label>Email</label>
             <input
