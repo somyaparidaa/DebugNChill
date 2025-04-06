@@ -1,0 +1,24 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+.env.local
+venv/
+
+# Dataset and outputs
+backend/data/
+backend/data/images/*
+backend/processed_images/
+*.csv
+*.zip
+*.tar.gz
+*.jpg  # Ignores all .jpg files anywhere (including test_image.jpg)
+
+# Model weights
+*.h5
+*.pb
+
+# VSCode settings
+.vscode/
