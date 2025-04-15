@@ -1,24 +1,22 @@
-# Python cache
+# Ignore Python cache
 __pycache__/
 *.pyc
 
-# Environment files
+# Ignore environment files
 .env
-.env.local
 venv/
+.env.local
 
-# Dataset and outputs
+# Ignore datasets and outputs
 backend/data/
-backend/data/images/*
 backend/processed_images/
 *.csv
 *.zip
 *.tar.gz
-*.jpg  # Ignores all .jpg files anywhere (including test_image.jpg)
+*.jpg  # for test_image.jpg etc.
 
-# Model weights
-*.h5
+# Ignore model weights if you don't want them in GitHub
 *.pb
 
-# VSCode settings
+# VSCode settings (optional)
 .vscode/
