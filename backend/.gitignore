@@ -8,7 +8,7 @@ venv/
 .env.local
 
 # Ignore datasets and outputs
-backend/data/
+backend/data/images
 backend/processed_images/
 *.csv
 *.zip
