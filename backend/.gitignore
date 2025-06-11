@@ -13,7 +13,7 @@ backend/processed_images/
 *.csv
 *.zip
 *.tar.gz
-*.jpg  # for test_image.jpg etc.
+!backend/test_image.jpg  # for test_image.jpg etc.
 
 # Ignore model weights if you don't want them in GitHub
 *.pb
